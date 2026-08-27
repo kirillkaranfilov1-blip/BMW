@@ -1,0 +1,307 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #164b8a, transparent 40%),
+        radial-gradient(circle at bottom right, #102c5c, transparent 40%),
+        #020817;
+
+    font-family: Arial, sans-serif;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* Основной блок */
+.Game {
+    width: 900px;
+    max-width: 100%;
+    padding: 35px;
+
+    background: rgba(7, 20, 42, 0.85);
+    border: 1px solid rgba(70, 160, 255, 0.35);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.6),
+        inset 0 0 40px rgba(0, 120, 255, 0.05);
+
+    backdrop-filter: blur(15px);
+}
+
+/* Заголовок */
+.Game > p {
+    margin: 0 0 30px;
+
+    text-align: center;
+
+    font-size: 36px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #55baff,
+        #ffffff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Информация */
+.Info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 55px;
+
+    margin-bottom: 25px;
+
+    padding: 18px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 15px;
+}
+
+/* Подписи */
+.Info > p,
+.Time > p {
+    margin: 0;
+
+    color: #83bfff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+/* Значения */
+.Score,
+.record,
+.Second {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 28px;
+    font-weight: 800;
+
+    color: white;
+
+    text-align: center;
+
+    text-shadow: 0 0 15px rgba(50, 160, 255, 0.8);
+}
+
+.Time {
+    text-align: center;
+}
+
+/* Кнопка */
+.Start {
+    display: block;
+
+    margin: 0 auto 25px;
+
+    padding: 13px 35px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #168cff,
+        #0059d6
+    );
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 25px rgba(0, 110, 255, 0.4);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+}
+
+.Start:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(0, 140, 255, 0.65);
+}
+
+.Start:active {
+    transform: translateY(1px);
+}
+
+.Start:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Игровое поле */
+.Game-fild {
+    position: relative;
+
+    width: 100%;
+    height: 500px;
+
+    overflow: hidden;
+
+    border: 2px solid rgba(70, 170, 255, 0.35);
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(20, 80, 150, 0.15),
+            transparent 70%
+        ),
+        #06172e;
+
+    box-shadow:
+        inset 0 0 50px rgba(0, 100, 255, 0.12),
+        0 0 25px rgba(0, 100, 255, 0.1);
+}
+
+/* Линии игрового поля */
+.Game-fild::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(80, 170, 255, 0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(80, 170, 255, 0.04) 1px,
+            transparent 1px
+        );
+
+    background-size: 35px 35px;
+
+    pointer-events: none;
+}
+
+/* Квадрат */
+.square {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #61c7ff,
+        #0077ff
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    box-shadow:
+        0 0 10px #008cff,
+        0 0 25px rgba(0, 140, 255, 0.8),
+        inset 0 0 10px rgba(255, 255, 255, 0.4);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s,
+        box-shadow 0.2s;
+}
+
+/* Наведение */
+.square:hover {
+    transform: scale(1.12);
+
+    box-shadow:
+        0 0 15px #2aa9ff,
+        0 0 35px rgba(0, 160, 255, 1);
+}
+
+/* Клик */
+.square:active {
+    transform: scale(0.85);
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .Game {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .Game > p {
+        font-size: 27px;
+        margin-bottom: 20px;
+    }
+
+    .Info {
+        gap: 20px;
+        padding: 15px 10px;
+    }
+
+    .Info > p,
+    .Time > p {
+        font-size: 11px;
+    }
+
+    .Score,
+    .record,
+    .Second {
+        font-size: 22px;
+    }
+
+    .Start {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .Game-fild {
+        height: 400px;
+    }
+
+    .square {
+        width: 40px;
+        height: 40px;
+    }
+}
